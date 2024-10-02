@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row my-5">
             <div class="col-lg-6">
-                <nuxt-link to="/pengunjung/tambah">
+                <nuxt-link to="/siswa/tambah">
                     <div class="card bg-success rounded-5">
                         <div class="card-body">
                             <h5>Isi Kehadiran</h5>
@@ -11,10 +11,10 @@
                 </nuxt-link>
             </div>
             <div class="col-lg-6">
-                <nuxt-link to="/buku">
+                <nuxt-link to="/siswa">
                     <div class="card bg-success rounded-5">
                         <div clas="card-body">
-                            <h1>Rekap Data</h1>
+                            <h1>Riwayat</h1>
                         </div>
                     </div>
                 </nuxt-link>
@@ -22,19 +22,20 @@
         </div>
         <div class="row my-5">
             <div class="col-lg-6">
-                <nuxt-link to ="/pengunjung">
+                <nuxt-link to ="/rekap">
                 <div class="card bg-success rounded-5">
                     <div class="card-body">
-                        <h2 class="font"> {{ jumlahpengunjung}} Tambah Siswa </h2>                    </div>
+                        <h2 class="font">Rekap </h2>                    
+                    </div>
                 </div>
                 </nuxt-link>
             </div>
         
             <div class="col-lg-6">
-                <nuxt-link to="/buku">
+                <nuxt-link to="/data">
                 <div class="card bg-success rounded-5">
                     <div class="card-body">
-                        <h6 class="font"> {{jumlahbuku}} Data Siswa </h6>
+                        <h6 class="font">Data Siswa </h6>
                     </div>
                 </div>
                 </nuxt-link>
@@ -43,31 +44,7 @@
     </div>
 </template>
 
-<script setup>
-const supabase = useSupabaseClient();
-const jumlahpengunjung = ref (0);
-const jumlahbuku = ref (0);
 
-
-async function ambiljumlahpengunjung() {
-    const { data,error, count} = await supabase
-    .from("pengunjung")
-    .select("*", {count: 'exact'});
-    if (count) jumlahpengunjung.value = count;
-}
-async function ambiljumlahbuku() {
-    const { data,error, count} = await supabase
-    .from("buku")
-    .select("*", {count: 'exact'});
-    if (count) jumlahbuku.value = count;
-}
-
-
-onMounted(() => {
-    ambiljumlahpengunjung();
-    ambiljumlahbuku();
-})
-</script>
 
 
 
