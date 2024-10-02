@@ -11,7 +11,7 @@
                     <form @submit.prevent="getsiswa">
                         <input v-model="keyword" type="search" class="form-control rounded-5" placeholder="Cari">
                     </form>
-                    <div class="my-3 text-muted"> menampilkan {{ visitors.length }} dari {{ jumlah }} siswa</div>
+                    <div class="my-3 text-muted"> menampilkan {{ visitors.length }} dari {{ jumlah }} </div>
                     <table class="table table-bordered">
                         <thead>
                             <tr>

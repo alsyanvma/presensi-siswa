@@ -38,7 +38,6 @@ const objectives = ref([])
 const form = ref ({
   nama:"",
   keterangan:"",
- 
 })
 const kirimData = async () => {
   // console.log(form.value)
