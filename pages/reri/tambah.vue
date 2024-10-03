@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="text-center my-4">RIWAYAT</h2>
-                <nuxt-link to="/halaman2">
+                <nuxt-link to="/halaman1">
                 <i class="bi bi-arrow-left"></i>
                 </nuxt-link>
                 <div class="my-3">
-                    <form @submit.prevent="getsiswa">
+                    <form @submit.prevent="getguru">
                         <input v-model="keyword" type="search" class="form-control rounded-5" placeholder="Cari">
                     </form>
                     <div class="my-3 text-muted"> menampilkan {{ visitors.length }} dari {{ jumlah }} siswa </div>

@@ -2,20 +2,20 @@
 const supabase = useSupabaseClient();
 const email = ref("");
 const password = ref("");
-const loading = ref(false);
-const error = ref(""); 
+// const loading = ref(false);
+// const error = ref(""); 
 
 const Login = async () => {
-  loading.value = true;
-  error.value = "";
-  const { data, error: loginError } = await supabase.auth.signInWithPassword({
+  // loading.value = true;
+  // error.value = "";
+  const { data, error } = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
   });
   
   if (data) {
-    loading.value = false
-    navigateTo('/')
+    // loading.value = false
+    navigateTo('/halaman1')
   }
 };
 </script>
@@ -42,7 +42,10 @@ const Login = async () => {
                 class="form-control" 
               />
             </div>
-            <button 
+            <div>
+              <button>Login</button>
+            </div>
+            <!-- <button 
               type="submit" 
               class="btn btn-primary" 
               :disabled="loading"
@@ -52,7 +55,7 @@ const Login = async () => {
             </button>
             <div v-if="error" class="alert alert-danger mt-3">
               {{ error }}
-            </div>
+            </div> -->
           </form>     
         </div>
       </div>

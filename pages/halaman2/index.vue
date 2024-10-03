@@ -1,20 +1,23 @@
 <template>
     <div class="container-fluid">
+        <nuxt-link to="/">
+            back
+        </nuxt-link>
         <div class="row my-5">
             <div class="col-lg-6">
-                <nuxt-link to="/login">
+                <nuxt-link to="/siswa/tambah">
                     <div class="card bg-success rounded-5">
                         <div class="card-body">
-                            <h5>Admin</h5>
+                            <h5>Riwayat</h5>
                         </div>
                     </div>
                 </nuxt-link>
             </div>
             <div class="col-lg-6">
-                <nuxt-link to="/halaman2">
+                <nuxt-link to="/siswa">
                     <div class="card bg-success rounded-5">
                         <div clas="card-body">
-                            <h1>Umum</h1>
+                            <h1>Rekap Harian</h1>
                         </div>
                     </div>
                 </nuxt-link>
@@ -58,8 +61,4 @@ h5{
     text-align: center;
     margin-top: 50px;
 }
-
-
-
-
 </style>
