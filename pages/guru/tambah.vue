@@ -43,7 +43,7 @@
   const kirimData = async () => {
     // console.log(form.value)
     const { data, error } = await supabase.from("riwayat").insert([form.value])
-    if (!error) navigateTo('/guru')
+    if (!error) navigateTo('/reri/tambah')
   }
   const getNama = async () => {
     const { data, error } = await supabase.from('siswa').select('*')

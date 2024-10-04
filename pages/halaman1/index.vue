@@ -1,6 +1,14 @@
 <template>
     <div class="container-fluid">
+        <div class="container-fluid">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+      <div class="row">
+        <div class="col-lg-12">
+          <nuxt-link to="/">
+            <i class="bi bi-arrow-left"></i>
+          </nuxt-link>
         <div class="row my-5">
+
             <div class="col-lg-6">
                 <nuxt-link to="/guru/tambah">
                     <div class="card bg-success rounded-5">
@@ -42,6 +50,9 @@
             </div>
         </div>
     </div>
+      </div>
+    </div>
+    </div>
 </template>
 
 
@@ -58,9 +69,14 @@
     margin-left: 100px ;
     box-shadow: 1px 1px 20px #291f1f;
     margin-top: 20px;
-    width: 700px;
-    height: 200px;
+ 
 }
+
+i {
+    color: black;
+    font-size: 2em;
+    
+  }
 
 h1 {
     color: rgb(255, 255, 255);

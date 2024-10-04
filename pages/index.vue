@@ -34,11 +34,10 @@
 .card {
     height: 200px;
     margin-right: 27px;
-    margin-left: 100px ;
+    margin-left: 50px ;
     box-shadow: 1px 1px 20px #291f1f;
     margin-top: 200px;
-    width: 700px;
-    height: 200px;
+    
 }
 
 h1 {

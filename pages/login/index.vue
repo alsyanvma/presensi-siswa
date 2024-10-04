@@ -2,20 +2,27 @@
 const supabase = useSupabaseClient();
 const email = ref("");
 const password = ref("");
-// const loading = ref(false);
-// const error = ref(""); 
+const errorMessage = ref("");
 
 const Login = async () => {
-  // loading.value = true;
-  // error.value = "";
+  if (!email.value || !password.value) {
+    errorMessage.value = "wajib diisi!";
+    return;
+  }
+
+  // Proses login
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
   });
-  
+
+  if (error) {
+    errorMessage.value = error.message;  
+  }
+
   if (data) {
-    // loading.value = false
-    navigateTo('/halaman1')
+    navigateTo("/halaman1");
+    
   }
 };
 </script>
@@ -61,3 +68,7 @@ const Login = async () => {
       </div>
     </div>
   </template>
+
+<style scoped>
+
+</style>
