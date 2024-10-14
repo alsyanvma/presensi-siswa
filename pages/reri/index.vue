@@ -38,44 +38,32 @@
   </template>
   
   <script setup>
-  const supabase = useSupabaseClient(); // Inisialisasi Supabase Client
-  const rekapData = ref([]); // Variabel untuk menyimpan data rekap
-  
-  // Fungsi untuk memformat tanggal menjadi format yang mudah dibaca
+  const supabase = useSupabaseClient(); 
+  const rekapData = ref([]); 
   const formatTanggal = (tanggal) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(tanggal).toLocaleDateString("id-ID", options);
   };
-  
-  // Fungsi untuk menghitung dan mengambil data rekap dari tabel riwayat
+
   const fetchRekapData = async () => {
     try {
-      // Mengambil data dari tabel riwayat, termasuk keterangan dan created_at
       const { data: siswaData, error } = await supabase
         .from("riwayat")
         .select("keterangan (keterangan), created_at");
   
       if (error) throw error;
   
-      console.log("Data Presensi:", siswaData); // Log data untuk debugging
-  
-      // Objek untuk menyimpan hasil rekap berdasarkan created_at
+      console.log("Data Presensi:", siswaData); 
       const rekap = {};
-  
-      // Looping untuk menghitung jumlah izin, sakit, dan alfa berdasarkan created_at
       siswaData.forEach(visitor => {
-        const key = visitor.created_at; // Menggunakan created_at sebagai kunci utama
-  
-        // Jika belum ada data untuk tanggal tersebut, buat entri baru
+        const key = visitor.created_at; 
+
         if (!rekap[key]) {
           rekap[key] = { waktu: key, jumlahIzin: 0, jumlahSakit: 0, jumlahAlfa: 0 };
         }
-  
-        // Memastikan keterangan ada, jika tidak ada beri nilai default 'Tidak Diketahui'
-        const keterangan = visitor.keterangan?.keterangan || 'Tidak Diketahui';
-        console.log(`Keterangan pada ${key}:`, keterangan); // Log keterangan untuk debugging
-  
-        // Switch case untuk mengelompokkan jumlah izin, sakit, dan alfa
+        
+        const keterangan = (visitor.keterangan?.keterangan || 'Tidak Diketahui').trim();
+        console.log(`Keterangan pada ${key}:`, keterangan); 
         switch (keterangan) {
           case 'Izin':
             rekap[key].jumlahIzin++;
@@ -88,15 +76,13 @@
             break;
         }
       });
-  
-      // Mengubah objek rekap menjadi array dan mengurutkannya berdasarkan created_at (terbaru ke terlama)
+
       rekapData.value = Object.values(rekap).sort((a, b) => new Date(b.waktu) - new Date(a.waktu));
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  
-  // Memanggil fungsi fetchRekapData ketika komponen di-mount
+
   onMounted(() => {
     fetchRekapData();
   });

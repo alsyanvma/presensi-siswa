@@ -50,11 +50,11 @@ const Login = async () => {
               />
             </div>
             <div>
-              <button>Login</button>
+              <button style="background-color: #58A86A;">Login</button>
             </div>
             <!-- <button 
               type="submit" 
-              class="btn btn-primary" 
+              class="btn btn-58A86A" 
               :disabled="loading"
             >
               <span v-if="loading">Loading...</span>

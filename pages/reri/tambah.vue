@@ -43,11 +43,12 @@ const keyword = ref('')
 const visitors = ref([])
 const jumlah = ref ([])
 
+
 const getsiswa = async () => {
     const {data, error} = await supabase.from("riwayat").select(`*, nama(*), keterangan(*)`)
         .ilike('nama.nama', `%${keyword.value}%`)
         .order(`id`, {ascending:false})
-    if(data) visitors.value = data
+     if(data) visitors.value = data
 }
 
 const getjumlah = async () => {
@@ -62,6 +63,7 @@ onMounted(()=> {
     getsiswa()
     getjumlah()
 
+    
 })
 
 </script>
