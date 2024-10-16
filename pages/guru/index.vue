@@ -23,7 +23,7 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr v-for="(visitor,i) in visitors" :key="i">
+                        <tr v-for="(visitor, i) in filteredVisitors" :key="i">
                               <td>{{ i+1 }}.</td>
                               <td>{{ visitor.nis }}</td>
                               <td>{{ visitor.nama }}</td>
@@ -52,6 +52,13 @@ const getjumlah = async () => {
   .select("*", {count: 'exact'});
   if (data) jumlah.value = count
 }
+
+const filteredVisitors = computed(() => {
+  if (!keyword.value) return visitors.value;
+  return visitors.value.filter(visitor =>
+    visitor.nama.toLowerCase().includes(keyword.value.toLowerCase())
+  );
+});
 
 onMounted(()=> {
   getsiswa()
